@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowLeft, RefreshCw, Sparkles } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Sparkles, LoaderCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import {
@@ -195,6 +195,83 @@ export function Vibe() {
     }
   }, [initialMood]);
 
+  /*
+   * Tela de carregamento.
+   *
+   * Ela fica fora do step 4 de propósito.
+   * Assim que o usuário termina o quiz,
+   * loading aparece imediatamente enquanto
+   * as APIs são consultadas.
+   */
+  if (loading) {
+    return (
+      <div className="flex min-h-[calc(100vh-80px)] items-center justify-center px-5">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 12,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.35,
+          }}
+          className="w-full max-w-xl text-center"
+        >
+          <div className="flex justify-center">
+            <motion.div
+              animate={{
+                rotate: 360,
+              }}
+              transition={{
+                duration: 1.2,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+              className="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 dark:border-white/10"
+            >
+              <LoaderCircle
+                size={24}
+                strokeWidth={1.5}
+                className="text-black dark:text-white"
+              />
+            </motion.div>
+          </div>
+
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[.25em] text-zinc-500">
+            VIBES
+          </p>
+
+          <h1 className="mt-4 text-3xl font-black tracking-[-.04em] md:text-5xl">
+            Encontrando sua vibe
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-zinc-500">
+            Cruzando suas escolhas com filmes e músicas
+            para encontrar recomendações que combinam
+            com o seu momento.
+          </p>
+
+          <div className="mx-auto mt-10 h-px w-48 overflow-hidden bg-black/10 dark:bg-white/10">
+            <motion.div
+              className="h-full w-1/2 bg-black dark:bg-white"
+              animate={{
+                x: ['-100%', '200%'],
+              }}
+              transition={{
+                duration: 1.4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
   if (step === 4) {
     return (
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
@@ -216,7 +293,8 @@ export function Vibe() {
           </h1>
 
           <p className="mt-4 max-w-xl text-zinc-500">
-            Uma seleção criada a partir do seu momento. Salve o que fizer sentido.
+            Uma seleção criada a partir do seu momento.
+            Salve o que fizer sentido.
           </p>
         </div>
 
@@ -309,7 +387,9 @@ export function Vibe() {
                 </h3>
 
                 <p className="mt-2 text-sm leading-6 text-zinc-500">
-                  Você pode refazer a seleção a qualquer momento e descobrir uma combinação completamente diferente.
+                  Você pode refazer a seleção a qualquer
+                  momento e descobrir uma combinação
+                  completamente diferente.
                 </p>
 
                 <button
@@ -337,7 +417,8 @@ export function Vibe() {
         </h1>
 
         <p className="mt-3 text-zinc-500">
-          Confira suas chaves de API no arquivo .env e tente novamente.
+          Confira suas chaves de API no arquivo .env e
+          tente novamente.
         </p>
 
         <button
