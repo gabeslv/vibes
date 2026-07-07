@@ -1,0 +1,1 @@
+import type {ReactNode} from 'react'; export function Section({title,children,action}:{title:string;children:ReactNode;action?:React.ReactNode}){return <section className="mx-auto max-w-7xl px-5 py-10 lg:px-8"><div className="mb-5 flex items-end justify-between"><h2 className="text-xl font-bold tracking-tight md:text-2xl">{title}</h2>{action}</div>{children}</section>}
