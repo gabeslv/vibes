@@ -10,9 +10,13 @@ export interface Movie {
   backdrop_path: string | null;
   release_date: string;
   vote_average: number;
+  popularity?: number;
   genre_ids: number[];
   runtime?: number;
-  genres?: { id: number; name: string }[];
+  genres?: {
+    id: number;
+    name: string;
+  }[];
 }
 
 export interface Track {
