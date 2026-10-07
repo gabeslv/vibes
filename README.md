@@ -13,32 +13,11 @@ VIBES é uma aplicação React/TypeScript para descobrir filmes e músicas a par
 - Last.fm API (músicas)
 - localStorage (favoritos, histórico e tema)
 
-## Rodando localmente
-
-```bash
-npm install
-```
-
-Copie `.env.example` para `.env` e preencha:
-
-```env
-VITE_TMDB_API_KEY=...
-VITE_LASTFM_API_KEY=...
-```
-
-Depois:
-
-```bash
-npm run dev
-```
-
 ## APIs
 
-TMDB: crie uma conta em https://www.themoviedb.org/ e obtenha uma chave nas configurações da API.
+TMDB
 
-Last.fm: crie uma API key em https://www.last.fm/api/account/create.
-
-> As chaves usadas no frontend são adequadas para um projeto de portfólio/desenvolvimento. Para produção, não coloque credenciais privadas no cliente: prefira um backend/proxy próprio.
+Last.fm
 
 ## Build
 
