@@ -19,13 +19,6 @@ TMDB
 
 Last.fm
 
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
 ## Funcionalidades
 
 - Quiz de vibe em 4 etapas
